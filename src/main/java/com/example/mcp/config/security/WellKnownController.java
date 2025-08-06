@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WellKnownController {
 
-    @Value("${security.authorization_server}")
+    @Value("${security.oauth-protected-resource.resource}")
+    private String resource;
+    @Value("${security.oauth-protected-resource.authorization_server}")
     private String authorizationServer;
 
     @GetMapping("/.well-known/oauth-protected-resource")
     public Map<String, Object> getPublicResourceMetadata() {
         return Map.of(
-            "resource", "http://localhost:8080",
+            "resource", resource,
             "authorization_servers", List.of(authorizationServer)
         );
     }

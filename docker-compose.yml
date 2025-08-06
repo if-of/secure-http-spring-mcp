@@ -1,6 +1,16 @@
 version: "3.8"
 
 services:
+
+  mcp:
+    build: .
+    environment:
+      - SECURITY_RESOURCE=http://host.docker.internal:8080
+      - SECURITY_ISSUER_URL=http://host.docker.internal:8099/realms/mcp
+      - SECURITY_AUTHORIZATION_SERVER_URL=http://host.docker.internal:8099/realms/mcp
+    ports:
+      - "8080:8080"
+
   keycloak:
     image: quay.io/keycloak/keycloak:26.3.2
     command: start-dev
