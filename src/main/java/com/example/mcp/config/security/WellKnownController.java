@@ -18,6 +18,7 @@ public class WellKnownController {
     @GetMapping("/.well-known/oauth-protected-resource")
     public Map<String, Object> getPublicResourceMetadata() {
         return Map.of(
+            "scopes_supported", List.of("mcp-client-scope"),
             "resource", resource,
             "authorization_servers", List.of(authorizationServer)
         );
