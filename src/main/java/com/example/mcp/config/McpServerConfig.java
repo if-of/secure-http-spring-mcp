@@ -29,7 +29,7 @@ public class McpServerConfig {
 
     @Bean
     public ServletRegistrationBean<HttpServletStreamableServerTransportProvider> configurableServlet() {
-        return new ServletRegistrationBean<>(transportProvider(), "");
+        return new ServletRegistrationBean<>(transportProvider(), "/mcp");
     }
 
     @Bean

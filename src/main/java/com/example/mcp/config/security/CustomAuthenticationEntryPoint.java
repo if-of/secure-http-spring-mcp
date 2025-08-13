@@ -20,7 +20,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         this.delegate.commence(request, response, authException);
         var existingHeader = response.getHeader(HttpHeaders.WWW_AUTHENTICATE);
-        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, existingHeader + " resource_metadata=http://localhost:8080/.well-known/oauth-protected-resource");
+        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, existingHeader + " resource_metadata=\"http://localhost:8080/.well-known/oauth-protected-resource\"");
     }
 
 }
